@@ -19,6 +19,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     Button finishOrderBtn;
 
     String orderNumber;
+    Customer customer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
                 Intent i = new Intent(PaymentActivity.this, OrderDoneActivity.class);
                 i.putExtra("ORDER_NUMBER", orderNumber);
+                i.putExtra("Customer name  - surname ", customer.customerName);
                 startActivity(i);
 
         }

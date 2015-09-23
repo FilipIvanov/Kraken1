@@ -21,7 +21,7 @@ public class OrderDoneActivity extends AppCompatActivity implements View.OnClick
     TextView etOrderDone;
     String orderNumber;
     Button etBackToMainMenu;
-
+    Customer customer;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,7 @@ public class OrderDoneActivity extends AppCompatActivity implements View.OnClick
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
             orderNumber = extras.getString("ORDER_NUMBER");
+            customer.customerName = extras.getString("Customer name  - surname");
            // selecteditem = extras.getString("Customer name  - surname");
 
         }

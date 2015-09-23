@@ -84,31 +84,12 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
         });
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//
-//
-//    }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Bundle extras = getIntent().getExtras();
-        if(extras !=null) {
-
-            // selecteditem = extras.getString("Customer name  - surname");
-            customer = extras.get("Surname Name");
-            Customer customer = (Customer) getIntent().getSerializableExtra("Surname Name");
-        }
-    }
 
     @Override
     public void onClick(View view) {
@@ -144,6 +125,7 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 Intent i = new Intent(this, PaymentActivity.class);
                 i.putExtra("ORDER_NUMBER", orderNumber);
+                i.putExtra("Customer name  - surname ", customer.customerName);
                 startActivity(i);
                 break;
 
