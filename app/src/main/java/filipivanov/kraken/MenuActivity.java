@@ -30,7 +30,7 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
 
     Spinner etSpinner, etSpinnerMenu;
 
-    String orderNumber,spinnerValue;
+    String orderNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
