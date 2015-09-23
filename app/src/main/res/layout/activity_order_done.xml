@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:padding="10dp">
+
+
+    <TextView
+
+        android:id="@+id/etShowOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#008000"
+        android:padding="5dp"
+       />
+
+    <Button
+
+        android:id="@+id/etBackToMainMenu"
+        android:text="Back to main menu"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        ></Button>
+
+</LinearLayout>

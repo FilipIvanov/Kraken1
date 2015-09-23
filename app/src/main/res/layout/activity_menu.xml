@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+
+    <Spinner
+        android:id="@+id/etSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/etSpinnerMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Spinner>
+
+
+
+
+
+
+
+    <Button
+        android:id="@+id/populateMenuBtn"
+        android:text="Choose items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/finishOrderBtn"
+        android:text="Complete your order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
