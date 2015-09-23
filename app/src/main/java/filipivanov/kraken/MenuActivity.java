@@ -81,13 +81,13 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
-
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//
+//
+//    }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
