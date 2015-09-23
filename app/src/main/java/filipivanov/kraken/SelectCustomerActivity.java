@@ -11,11 +11,9 @@ import android.widget.Spinner;
 /**
  * Created by WakingBliss on 9/23/2015.
  */
-public class SelectCustomerActivity extends AppCompatActivity  {
+public class SelectCustomerActivity extends AppCompatActivity {
 
     Spinner etSelectCustomerSpinner;
-
-
 
 
     @Override
@@ -23,13 +21,16 @@ public class SelectCustomerActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_customer);
 
+        etSelectCustomerSpinner = (Spinner) findViewById(R.id.etSelectCustomerSpinner);
+
         new ServerRequests(this).fetchCustomerInfoInBackground(new Callback<CustomerList>() {
             @Override
             public void done(CustomerList customerList) {
-                ArrayAdapter<Customer> customer = new ArrayAdapter<Customer>(SelectCustomerActivity.this, R.layout.spinner_layout, R.id.etTxt, customerList.customer);
+                ArrayAdapter<Customer> customer = new ArrayAdapter<Customer>(SelectCustomerActivity.this, R.layout.spinner_layout, R.id.etTxt, customerList.customerList);
                 etSelectCustomerSpinner.setAdapter(customer);
             }
         });
 
 
-        }
+    }
+}

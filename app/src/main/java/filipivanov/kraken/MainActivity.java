@@ -75,7 +75,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             case R.id.enterCustomerBtn:
 
-                startActivity(new Intent(this,CustomerActivity.class));
+                startActivity(new Intent(this,SelectCustomerActivity.class));
                 break;
         }
     }
