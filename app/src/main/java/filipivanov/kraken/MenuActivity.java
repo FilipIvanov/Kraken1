@@ -30,7 +30,7 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
 
     Spinner etSpinner, etSpinnerMenu;
 
-    String orderNumber;
+    String orderNumber,spinnerValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +71,7 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
         finishOrderBtn.setOnClickListener(this);
 
         orderNumber = UUID.randomUUID().toString();
+
 
         new ServerRequests(this).fetchMenuTypesInBackground(new Callback<MenuTypeList>() {
             @Override
