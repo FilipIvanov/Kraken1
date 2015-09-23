@@ -7,11 +7,13 @@ import java.io.Serializable;
  */
 public class Customer implements Serializable {
 
-    String  customerName,customerSurname,customerAddress,customerPhone;
+
+            String  customerName,customerSurname,customerAddress,customerPhone;
 
 
     public Customer(String customerName, String customerSurname, String customerAddress, String customerPhone   ){
 
+      //  this.customerId = customerId;
         this.customerName = customerName;
         this.customerSurname = customerSurname;
         this.customerAddress = customerAddress;
@@ -19,4 +21,20 @@ public class Customer implements Serializable {
 
 
     }
+
+    public Customer (String customerName, String customerSurname){
+
+
+
+        this.customerName = customerName;
+        this.customerSurname = customerSurname;
+
+    }
+
+    @Override
+    public String toString() {
+        return customerName+customerSurname;
+    }
+
+
 }

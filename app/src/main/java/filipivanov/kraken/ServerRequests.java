@@ -83,6 +83,12 @@ public class ServerRequests {
         new FetchOrderByOrderNumber(orderNumber, callback).execute();
     }
 
+    public void fetchCustomerInfoInBackground(Callback<CustomerList> customerListCallback) {
+        progressDialog.show();
+        new FetchCustomerInfoAsyncTask(customerListCallback).execute();
+
+    }
+
     public class StoreMenuAsyncTask extends AsyncTask<Void, Void, Void> {
 
         Menu menu;
@@ -533,4 +539,65 @@ public class ServerRequests {
             super.onPostExecute(orderList);
         }
     }
+
+    public class FetchCustomerInfoAsyncTask extends AsyncTask<Void, Void, CustomerList> {
+
+        CustomerList customerList;
+        Callback<CustomerList> callback;
+
+        public FetchCustomerInfoAsyncTask(Callback<CustomerList> callback) {
+
+            this.callback = callback;
+
+        }
+
+        @Override
+        protected CustomerList doInBackground(Void... params) {
+
+            HttpParams httpRequestParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpRequestParams, CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpRequestParams, CONNECTION_TIMEOUT);
+
+            HttpClient client = new DefaultHttpClient(httpRequestParams);
+            HttpPost post = new HttpPost(SERVER_ADRESS + "/FetchCustomerInfo.php");
+
+            CustomerList customerList = null;
+
+            try {
+
+                HttpResponse httpResponse = client.execute(post);
+                HttpEntity entity = httpResponse.getEntity();
+                String result = EntityUtils.toString(entity);
+                JSONArray jTypes = new JSONArray(result);   //dekodira iz JSON
+
+                if (jTypes.length() == 0) {
+
+                    customerList = null;
+
+                } else {
+                    List<Customer> items = new ArrayList<>();
+                    for(int i=0;i<jTypes.length();i++) {
+                        JSONObject customer = jTypes.getJSONObject(i);
+                        items.add(new Customer(customer.getString("customerName"), customer.getString("customerSurname")));
+                    }
+                    customerList = new CustomerList(items);
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return customerList;
+        }
+
+        @Override
+        protected void onPostExecute(CustomerList customer) {
+
+            progressDialog.dismiss();
+            callback.done(customer);
+            super.onPostExecute(customer);
+        }
+    }
+
 }
