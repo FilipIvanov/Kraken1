@@ -32,6 +32,8 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
 
     String orderNumber;
 
+    Customer customer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,8 +105,8 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
         if(extras !=null) {
 
             // selecteditem = extras.getString("Customer name  - surname");
-            spinnerValue = extras.get("Surname Name");
-
+            customer = extras.get("Surname Name");
+            Customer customer = (Customer) getIntent().getSerializableExtra("Surname Name");
         }
     }
 
