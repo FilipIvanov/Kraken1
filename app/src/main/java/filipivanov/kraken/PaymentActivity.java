@@ -35,8 +35,13 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         finishOrderBtn = (Button) findViewById(R.id.finishOrderBtn);
         finishOrderBtn.setOnClickListener(this);
 
-
+        Bundle extras = getIntent().getExtras();
+        if(extras !=null) {
+            orderNumber = extras.getString("ORDER_NUMBER");
+            customer = (Customer) extras.get("Customer");
+        }
     }
+
 
     @Override
     public void onClick(View view) {
@@ -47,7 +52,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
                 Intent i = new Intent(PaymentActivity.this, OrderDoneActivity.class);
                 i.putExtra("ORDER_NUMBER", orderNumber);
-                i.putExtra("Customer name  - surname ", customer.customerName);
+                i.putExtra("Customer", customer);
                 startActivity(i);
 
         }

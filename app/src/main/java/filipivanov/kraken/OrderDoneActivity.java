@@ -45,7 +45,7 @@ public class OrderDoneActivity extends AppCompatActivity implements View.OnClick
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
             orderNumber = extras.getString("ORDER_NUMBER");
-            customer.customerName = extras.getString("Customer name  - surname");
+            customer = (Customer) extras.get("Customer");
            // selecteditem = extras.getString("Customer name  - surname");
 
         }
@@ -54,6 +54,7 @@ public class OrderDoneActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void done(List<Order> orders) {
                 StringBuilder s = new StringBuilder();
+                s.append("CUSTOMER: ").append(customer.customerName).append(" ").append(customer.customerSurname).append("\n");
                 for (Order order : orders) {
                     s.append(order.menu.toString() + "\n");
                 }

@@ -74,6 +74,10 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
 
         orderNumber = UUID.randomUUID().toString();
 
+        Bundle extras = getIntent().getExtras();
+        if(extras !=null) {
+            customer = (Customer) extras.get("Customer");
+        }
 
         new ServerRequests(this).fetchMenuTypesInBackground(new Callback<MenuTypeList>() {
             @Override
@@ -125,7 +129,7 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 Intent i = new Intent(this, PaymentActivity.class);
                 i.putExtra("ORDER_NUMBER", orderNumber);
-                i.putExtra("Customer name  - surname ", customer.customerName);
+                i.putExtra("Customer", customer);
                 startActivity(i);
                 break;
 

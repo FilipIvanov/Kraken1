@@ -40,20 +40,6 @@ public class SelectCustomerActivity extends AppCompatActivity implements View.On
         etSelectCustomerSpinner = (Spinner) findViewById(R.id.etSelectCustomerSpinner);
 
 
-        etSelectCustomerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                etSelectCustomerSpinner.getSelectedItem();
-                Customer customer = (Customer) etSelectCustomerSpinner.getSelectedItem();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
 
 
@@ -75,7 +61,7 @@ public class SelectCustomerActivity extends AppCompatActivity implements View.On
 
 
                 Intent i = new Intent(this, MenuActivity.class);
-                i.putExtra("Customer name  - surname ", customer.customerName);
+                i.putExtra("Customer", customer);
                 startActivity(i);
 
 

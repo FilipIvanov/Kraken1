@@ -17,7 +17,7 @@ import android.widget.Spinner;
  */
 public class PopulateMenuActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
-    EditText etItemName, etItemSize, etItemDescription, etItemType;
+    EditText etItemName, etItemSize, etItemDescription;
     Button enterItembtn, finishItemEntriesBtn;
     Spinner etShotMenuTypesSpinner;
 
@@ -32,7 +32,7 @@ public class PopulateMenuActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_populate_menu);
 
 
-        etItemType = (EditText) findViewById(R.id.etItemType);
+
         etItemName = (EditText) findViewById(R.id.etItemName);
         etItemSize = (EditText) findViewById(R.id.etItemSize);
         etItemDescription = (EditText) findViewById(R.id.etItemDescription);
@@ -41,6 +41,16 @@ public class PopulateMenuActivity extends AppCompatActivity implements View.OnCl
         finishItemEntriesBtn = (Button) findViewById(R.id.finishItemEntriesBtn);
         finishItemEntriesBtn.setOnClickListener(this);
 
+        enterItembtn.setOnClickListener(this);
+        etShotMenuTypesSpinner = (Spinner) findViewById(R.id.etShotMenuTypesSpinner);
+
+        new ServerRequests(this).fetchMenuTypesInBackground(new Callback<MenuTypeList>() {
+            @Override
+            public void done(MenuTypeList menuTypeList) {
+                ArrayAdapter<MenuType> menuTypes = new ArrayAdapter<MenuType>(PopulateMenuActivity.this, R.layout.spinner_layout, R.id.etTxt, menuTypeList.menuTypes);
+                etShotMenuTypesSpinner.setAdapter(menuTypes);
+            }
+        });
 
     }
 
@@ -49,7 +59,7 @@ public class PopulateMenuActivity extends AppCompatActivity implements View.OnCl
 
         switch (view.getId()) {
 
-            case R.id.populateMenuBtn:
+            case R.id.enterItembtn:
 
                 //ovde procitas manu type kao sto je food recimo
                 //nekako iz drop down menija
@@ -57,14 +67,14 @@ public class PopulateMenuActivity extends AppCompatActivity implements View.OnCl
 
 
                 MenuType selectedMenuType = (MenuType) etShotMenuTypesSpinner.getSelectedItem();
-//
-//                String itemName = etItemName.getText().toString();
-//                String itemSize = etItemSize.getText().toString();
-//                String itemDescription = etItemDescription.getText().toString();
-//
-//                Menu menu = new Menu(0, selectedMenuType, itemName, itemSize, itemDescription);
-//
-//                populateMenu(menu);
+
+                String itemName = etItemName.getText().toString();
+                String itemSize = etItemSize.getText().toString();
+                String itemDescription = etItemDescription.getText().toString();
+
+                Menu menu = new Menu(0, selectedMenuType, itemName, itemSize, itemDescription);
+
+                populateMenu(menu);
                 break;
         }
     }

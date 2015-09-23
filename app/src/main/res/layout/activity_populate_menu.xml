@@ -13,16 +13,7 @@
 
     </Spinner>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Item type" />
 
-    <EditText
-        android:id="@+id/etItemType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
