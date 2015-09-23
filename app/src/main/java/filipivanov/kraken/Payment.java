@@ -1,9 +1,11 @@
 package filipivanov.kraken;
 
+import java.io.Serializable;
+
 /**
  * Created by WakingBliss on 9/16/2015.
  */
-public class Payment   {
+public class Payment implements Serializable {
 
     int cardNumber,verificationNumber;
     String cardName,expirationDate;

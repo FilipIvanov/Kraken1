@@ -45,6 +45,8 @@ public class OrderDoneActivity extends AppCompatActivity implements View.OnClick
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
             orderNumber = extras.getString("ORDER_NUMBER");
+           // selecteditem = extras.getString("Customer name  - surname");
+
         }
 
         new ServerRequests(this).fetchOrderByOrderNumber(orderNumber, new Callback<List<Order>>() {

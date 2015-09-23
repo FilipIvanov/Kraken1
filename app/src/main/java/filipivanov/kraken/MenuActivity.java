@@ -95,6 +95,19 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        Bundle extras = getIntent().getExtras();
+        if(extras !=null) {
+
+            // selecteditem = extras.getString("Customer name  - surname");
+            spinnerValue = extras.get("Surname Name");
+
+        }
+    }
+
+    @Override
     public void onClick(View view) {
 
         switch (view.getId()) {

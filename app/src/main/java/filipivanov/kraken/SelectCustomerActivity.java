@@ -17,6 +17,8 @@ public class SelectCustomerActivity extends AppCompatActivity implements View.On
 
     Spinner etSelectCustomerSpinner;
     Button goToMenuBtn;
+    String spinnerValue;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class SelectCustomerActivity extends AppCompatActivity implements View.On
         goToMenuBtn = (Button) findViewById(R.id.goToMenuBtn);
         goToMenuBtn.setOnClickListener(this);
 
+        spinnerValue.toString();
 
         etSelectCustomerSpinner = (Spinner) findViewById(R.id.etSelectCustomerSpinner);
 
@@ -40,6 +43,9 @@ public class SelectCustomerActivity extends AppCompatActivity implements View.On
 
     }
 
+
+
+
     @Override
     public void onClick(View view) {
 
@@ -48,10 +54,12 @@ public class SelectCustomerActivity extends AppCompatActivity implements View.On
 
             case R.id.goToMenuBtn:
 
-                Customer selectedItem = (Customer) etSelectCustomerSpinner.getSelectedItem();
+
 
                 Intent i = new Intent(this, MenuActivity.class);
-                i.putExtra("Customer name  - surname ", selectedItem);
+
+                i.putExtra("Surname Name", spinnerValue);
+
                 startActivity(i);
 
             break;

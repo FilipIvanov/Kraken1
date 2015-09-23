@@ -14,6 +14,7 @@
     </Spinner>
     
     <Button
+        android:text="Continue"
         android:id="@+id/goToMenuBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
