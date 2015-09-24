@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/starticon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
@@ -52,6 +52,9 @@
         <activity
             android:name=".SelectCustomerActivity"
             android:label="@string/title_activity_select_customer"></activity>
+        <activity
+            android:name=".SelectPaymentMethodActivity"
+            android:label="@string/title_activity_payment_method"></activity>
     </application>
 
 </manifest>

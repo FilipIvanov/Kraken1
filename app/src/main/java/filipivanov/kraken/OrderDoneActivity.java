@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -22,6 +24,9 @@ public class OrderDoneActivity extends AppCompatActivity implements View.OnClick
     String orderNumber;
     Button etBackToMainMenu;
     Customer customer;
+    Payment payment;
+    String delivery;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +51,8 @@ public class OrderDoneActivity extends AppCompatActivity implements View.OnClick
         if(extras !=null) {
             orderNumber = extras.getString("ORDER_NUMBER");
             customer = (Customer) extras.get("Customer");
-           // selecteditem = extras.getString("Customer name  - surname");
+            payment = (Payment) extras.get("PAYMENT_METHOD");
+          //  delivery = extras.getString("ON_DELIVERY");
 
         }
 
@@ -54,7 +60,10 @@ public class OrderDoneActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void done(List<Order> orders) {
                 StringBuilder s = new StringBuilder();
-                s.append("CUSTOMER: ").append(customer.customerName).append(" ").append(customer.customerSurname).append("\n");
+                s.append("CUSTOMER: ").append(customer.customerName).append(" ").append(customer.customerSurname).append("\n").append("\n");
+                s.append("PAYMENT_METHOD: ").append(payment.cardNumber).append(" ").append(payment.cardName).append("\n").append("\n");
+              //  s.append("ON_DELIVERY").append(delivery).append(" ").append("\n").append("\n");
+                ;
                 for (Order order : orders) {
                     s.append(order.menu.toString() + "\n");
                 }
@@ -62,6 +71,9 @@ public class OrderDoneActivity extends AppCompatActivity implements View.OnClick
 
             }
         });
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.action_bar);
+        toolbar.setNavigationIcon(R.drawable.orderdone);
 
     }
 
@@ -73,6 +85,8 @@ public class OrderDoneActivity extends AppCompatActivity implements View.OnClick
 
             case R.id.etBackToMainMenu:
 
+                Toast.makeText(getApplicationContext(), "Purchase has been made!",
+                        Toast.LENGTH_LONG).show();
 
                 startActivity(new Intent(OrderDoneActivity.this, MainActivity.class));
 

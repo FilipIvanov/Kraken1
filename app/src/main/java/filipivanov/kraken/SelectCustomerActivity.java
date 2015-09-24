@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,7 +40,8 @@ public class SelectCustomerActivity extends AppCompatActivity implements View.On
 
         etSelectCustomerSpinner = (Spinner) findViewById(R.id.etSelectCustomerSpinner);
 
-
+        Toolbar toolbar = (Toolbar)findViewById(R.id.action_bar);
+        toolbar.setNavigationIcon(R.drawable.customericon);
 
 
 

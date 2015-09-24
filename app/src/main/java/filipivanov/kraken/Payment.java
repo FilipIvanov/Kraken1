@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 public class Payment implements Serializable {
 
+
+
     int cardNumber,verificationNumber;
     String cardName,expirationDate;
 

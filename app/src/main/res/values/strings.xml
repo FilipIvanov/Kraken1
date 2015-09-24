@@ -9,10 +9,11 @@
 
     <string name="title_activity_order">Order</string>
     <string name="title_activity_customer">Customer</string>
-    <string name="title_activity_splash_screen">Splash</string>
+    <string name="title_activity_splash_screen">Kraken</string>
     <string name="title_activity_payment">Payment</string>
     <string name="title_activity_menu">Menu</string>
     <string name="title_activity_order_done">Order done</string>
     <string name="title_activity_populate_menu">Enter menu item(s)</string>
     <string name="title_activity_select_customer">Select customer</string>
+    <string name="title_activity_payment_method">Payment method</string>
 </resources>

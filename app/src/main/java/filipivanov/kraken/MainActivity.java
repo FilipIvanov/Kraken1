@@ -3,10 +3,13 @@ package filipivanov.kraken;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     Button orderBtn, fillMenuBtn, enterCustomerBtn;
@@ -64,7 +67,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //                userLocalStore.setUserLoggedIn(false);
 
 
-                startActivity(new Intent(this, MenuActivity.class));
+                startActivity(new Intent(this, SelectCustomerActivity.class));
 
                 break;
 
@@ -75,7 +78,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             case R.id.enterCustomerBtn:
 
-                startActivity(new Intent(this,SelectCustomerActivity.class));
+                startActivity(new Intent(this,CustomerActivity.class));
                 break;
         }
     }

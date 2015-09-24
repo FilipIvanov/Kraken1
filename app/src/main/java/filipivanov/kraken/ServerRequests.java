@@ -56,6 +56,12 @@ public class ServerRequests {
         new StoreOrderMealDataAsyncTask(order, orderCallback).execute();
     }
 
+    public void storePaymentInBackground(Payment payment, Callback<Payment> paymentCallback) {
+
+        progressDialog.show();
+        new StorePaymentAsyncTask(payment, paymentCallback).execute();
+    }
+
     public void storeCustomerInBackground(Customer customer, Callback<Customer> customerCallback) {
 
         progressDialog.show();
@@ -597,6 +603,57 @@ public class ServerRequests {
             progressDialog.dismiss();
             callback.done(customer);
             super.onPostExecute(customer);
+        }
+    }
+
+
+
+    public class StorePaymentAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        Payment payment;
+        Callback<Payment> paymentCallback;
+
+        public StorePaymentAsyncTask(Payment payment, Callback<Payment> paymentCallback) {
+
+            this.payment = payment;
+            this.paymentCallback = paymentCallback;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            ArrayList<NameValuePair> dataToSend = new ArrayList<>();
+
+
+
+            dataToSend.add(new BasicNameValuePair("cardNumber", payment.cardNumber + ""));
+            dataToSend.add(new BasicNameValuePair("verificationNumber",payment.verificationNumber + ""));
+            dataToSend.add(new BasicNameValuePair("cardName", payment.cardName));
+            dataToSend.add(new BasicNameValuePair("expirationDate", payment.expirationDate));
+
+
+
+            HttpParams httpRequestParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpRequestParams, CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpRequestParams, CONNECTION_TIMEOUT);
+
+            HttpClient client = new DefaultHttpClient(httpRequestParams);
+            HttpPost post = new HttpPost(SERVER_ADRESS + "/Payment.php");
+            try {
+                post.setEntity(new UrlEncodedFormEntity(dataToSend));
+                client.execute(post);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+
+            progressDialog.dismiss();
+            paymentCallback.done(null);
+            super.onPostExecute(aVoid);
         }
     }
 

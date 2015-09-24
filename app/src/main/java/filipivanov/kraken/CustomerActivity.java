@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by WakingBliss on 9/15/2015.
@@ -32,6 +34,9 @@ public class CustomerActivity extends AppCompatActivity implements View.OnClickL
         bProceedWithOrder.setOnClickListener(this);
 
         bProceedWithOrder.setOnClickListener(this);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.action_bar);
+        toolbar.setNavigationIcon(R.drawable.customericon);
 
 
     }
@@ -62,7 +67,8 @@ public class CustomerActivity extends AppCompatActivity implements View.OnClickL
                 Customer customer = new Customer(customerName,customerSurname,customerAddress, customerPhone);
                 enterCustomer(customer);
 
-
+                Toast.makeText(getApplicationContext(), "Customer has been entered!",
+                        Toast.LENGTH_LONG).show();
 
 
 

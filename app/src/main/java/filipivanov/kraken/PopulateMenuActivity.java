@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -52,6 +53,9 @@ public class PopulateMenuActivity extends AppCompatActivity implements View.OnCl
             }
         });
 
+        Toolbar toolbar = (Toolbar)findViewById(R.id.action_bar);
+        toolbar.setNavigationIcon(R.drawable.menuicon);
+
     }
 
     @Override
@@ -60,10 +64,6 @@ public class PopulateMenuActivity extends AppCompatActivity implements View.OnCl
         switch (view.getId()) {
 
             case R.id.enterItembtn:
-
-                //ovde procitas manu type kao sto je food recimo
-                //nekako iz drop down menija
-                //a onda iz liste MenuTypeList moras da nadjes koji je MenuType
 
 
                 MenuType selectedMenuType = (MenuType) etShotMenuTypesSpinner.getSelectedItem();
@@ -75,7 +75,16 @@ public class PopulateMenuActivity extends AppCompatActivity implements View.OnCl
                 Menu menu = new Menu(0, selectedMenuType, itemName, itemSize, itemDescription);
 
                 populateMenu(menu);
+
+                etItemName.setText("");
+                etItemSize.setText("");
+                etItemDescription.setText("");
+
                 break;
+
+            case R.id.finishItemEntriesBtn:
+
+                startActivity(new Intent(PopulateMenuActivity.this, MainActivity.class));
         }
     }
 

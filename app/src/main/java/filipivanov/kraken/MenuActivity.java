@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -86,6 +87,9 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
                 etSpinner.setAdapter(menuTypes);
             }
         });
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.action_bar);
+        toolbar.setNavigationIcon(R.drawable.waitericon);
     }
 
 
@@ -101,19 +105,7 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
         switch (view.getId()) {
 
             case R.id.populateMenuBtn:
-//
-//                //ovde procitas manu type kao sto je food recimo
-//                //nekako iz drop down menija
-//                //a onda iz liste MenuTypeList moras da nadjes koji je MenuType
-//                MenuType selectedMenuType = (MenuType) etSpinner.getSelectedItem();
-//
-//                String itemName = etItemName.getText().toString();
-//                String itemSize = etItemSize.getText().toString();
-//                String itemDescription = etItemDescription.getText().toString();
-//
-//                Menu menu = new Menu(0, selectedMenuType, itemName, itemSize, itemDescription);
-//
-//                populateMenu(menu);
+
 
                 Menu orderedMenu = (Menu) etSpinnerMenu.getSelectedItem();
                 new ServerRequests(this).storeOrderMealInBackground(new Order(0, orderedMenu, orderNumber), new Callback<Order>() {
